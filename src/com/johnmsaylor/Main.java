@@ -3,6 +3,7 @@ package com.johnmsaylor;
 import deck.Deck52;
 import game.BlackJack;
 import players.AI;
+import players.Dealer;
 import players.Human;
 import players.Player;
 import ui.Console;
@@ -15,11 +16,13 @@ public class Main {
 
         Player humanPlayer = new Human("John", console);
         Player aiPlayer = new AI();
+        Player dealer = new Dealer();
 
         ((Human) humanPlayer).addFundsToBalance(50);
 
         game.registerHand(humanPlayer);
         game.registerHand(aiPlayer);
+        game.registerHand(dealer);
 
         game.play();
 

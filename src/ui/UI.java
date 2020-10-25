@@ -13,4 +13,7 @@ public interface UI {
     int inputBet();
     boolean getAnswer(String string);
     void showHandValues(int[] values);
+    void showBlackJack();
+    void showBust();
+    void showTwentyOne();
 }

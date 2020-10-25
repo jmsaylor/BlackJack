@@ -14,10 +14,20 @@ public class Console implements UI{
 
     @Override
     public void showAllHandsFinalReveal(List<Hand> hands) {
+        System.out.println("FINAL RESULTS");
         for (Hand hand : hands) {
             printPlayer(hand.owner);
             showHandAllCards(hand);
-            showHandValues(hand.getPotentialTotals());
+            showHandValue(hand.getBestValue());
+            if (hand.isTwentyOne()) {
+                System.out.print("21");
+            }
+            if (hand.isBust()) {
+                System.out.print("BUST");
+            }
+//            if (hand.isWinner(hands)) {
+//                System.out.print("WINNER");
+//            }
             System.out.println();
         }
         System.out.println();
@@ -85,6 +95,25 @@ public class Console implements UI{
         System.out.print("]");
     }
 
+    public void showHandValue(int value) {
+        showHandValues(new int[]{value});
+    }
+
+    @Override
+    public void showBlackJack() {
+        System.out.println("BLACK JACK!");
+    }
+
+    @Override
+    public void showBust() {
+        System.out.println("BUST!");
+    }
+
+    @Override
+    public void showTwentyOne() {
+        System.out.println("TWENTY ONE!");
+    }
+
     public void printPlayer(Player player) {
         System.out.print(Player.getPlayerType(player) + " ");
         if (Player.isHuman(player)) {
@@ -98,7 +127,7 @@ public class Console implements UI{
         System.out.print(" | ");
     }
 
-    public void printCardValue(Card card) {
+    private void printCardValue(Card card) {
         switch (card.VALUE)
         {
             case TWO:
@@ -143,7 +172,7 @@ public class Console implements UI{
         }
     }
 
-    public void printCardSuite(Card card) {
+    private void printCardSuite(Card card) {
         switch (card.SUITE)
         {
             case CLUB:

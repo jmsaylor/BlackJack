@@ -4,29 +4,13 @@ import deck.Card;
 import deck.Value;
 import hand.Hand;
 
+import java.util.List;
+
 public interface Rules {
-    int[] getHandValue(Hand hand);
+    int[] getHandValues(Hand hand);
+    int getBestHandValue(Hand hand);
     boolean isBlackJack(Hand hand);
     boolean isTwentyOne(Hand hand);
     boolean isBust(Hand hand);
-
-    default boolean hasAce(Hand hand) {
-        boolean hasAce = false;
-        for (Card card : hand.getCards()) {
-            if (card.VALUE == Value.ACE) {
-                hasAce = true;
-            }
-        }
-        return hasAce;
-    }
-
-    default int aceCount(Hand hand) {
-        int aceCount = 0;
-        for (Card card: hand.getCards()) {
-            if (card.VALUE == Value.ACE) {
-                aceCount++;
-            }
-        }
-        return aceCount;
-    }
+    boolean isWinner(Hand hand, List<Hand> allHands);
 }

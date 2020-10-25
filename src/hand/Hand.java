@@ -1,17 +1,15 @@
 package hand;
 
 import deck.Card;
-import game.BlackJackRules;
 import game.Rules;
 import players.Player;
-import players.PlayerTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
     public Player owner;
-    Rules gameRules;
+    private Rules gameRules;
     private List<Card> cards = new ArrayList<>();
 
     public Hand(Player owner, Rules gameRules) {
@@ -28,9 +26,17 @@ public class Hand {
         return card;
     }
 
+    public boolean isWinner(List<Hand> allHands){ return gameRules.isWinner(this, allHands); }
+
     public int[] getPotentialTotals() {
-        return gameRules.getHandValue(this);
+        return gameRules.getHandValues(this);
     }
+
+    public int getBestValue() { return gameRules.getBestHandValue(this); }
+
+    public boolean isTwentyOne() { return gameRules.isTwentyOne(this); }
+
+    public boolean isBust() { return gameRules.isBust(this); }
 
     public List<Card> getCards() {
         return cards;
@@ -39,5 +45,6 @@ public class Hand {
     public Player getOwner() {
         return owner;
     }
+
 
 }

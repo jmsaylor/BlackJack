@@ -17,10 +17,6 @@ public class AI extends PlayerTemplate implements Player {
         return 0;
     }
 
-    @Override
-    public boolean hit() {
-        return false;
-    }
 
     @Override
     public boolean hit(Hand hand) {

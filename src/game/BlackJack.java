@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class BlackJack {
     private final Integer INITIAL_CARDS = 2;
-    Rules gameRules = new BlackJackRules();
+    Rules gameRules = new CasinoStandardRules();
     Deck deck;
 
     private List<Hand> activeHands = new ArrayList<>();
@@ -33,27 +33,40 @@ public class BlackJack {
         showGameIfHuman();
         for (Hand hand : getActiveHands()) {
             if (gameRules.isBlackJack(hand)) {
-                System.out.println("BLACK JACK!");
+                handleBlackJack(hand);
+                continue;
             }
             handleSplit(hand);
             showHandIfHuman(hand);
             while (wantsHit(hand)) {
                 if (gameRules.isTwentyOne(hand)) {
-                    System.out.println("TWENTY ONE!");
+                    handleTwentyOne(hand);
+                    break;
                 }
                 hit(hand);
                 showHandIfHuman(hand);
                 if (gameRules.isBust(hand)) {
-                    System.out.println("BUST!");
+                    handleBust(hand);
                     break;
                 }
             }
         }
         finalReveal();
+        System.out.println(determineWinners());
+    }
+
+    private List<Hand> determineWinners() {
+        List<Hand> winners = new ArrayList<>();
+        for (Hand hand : getActiveHands()) {
+            if (hand.isWinner(getActiveHands())) {
+                winners.add(hand);
+            }
+        }
+        return winners;
     }
 
     public int[] getHandValue(Hand hand){
-        return gameRules.getHandValue(hand);
+        return gameRules.getHandValues(hand);
     }
 
     private boolean wantsHit(Hand hand) {
@@ -128,6 +141,31 @@ public class BlackJack {
         for (Hand hand : getActiveHands()) {
             if (Player.isHuman(hand.getOwner())) {
                 ((Human) hand.getOwner()).ui.showAllHandsFinalReveal(getActiveHands());
+            }
+        }
+    }
+
+    private void handleBlackJack(Hand hand) {
+        if (gameRules.isBlackJack(hand)) {
+            if (Player.isHuman(hand.getOwner())) {
+                ((Human) hand.getOwner()).ui.showBlackJack();
+            }
+
+        }
+    }
+
+    private void handleTwentyOne(Hand hand) {
+        if (gameRules.isTwentyOne(hand)){
+            if (Player.isHuman(hand.getOwner())) {
+                ((Human) hand.getOwner()).ui.showTwentyOne();
+            }
+        }
+    }
+
+    private void handleBust(Hand hand) {
+        if (gameRules.isBust(hand)) {
+            if (Player.isHuman(hand.getOwner())) {
+                ((Human) hand.getOwner()).ui.showBust();
             }
         }
     }

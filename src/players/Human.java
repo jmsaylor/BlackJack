@@ -27,14 +27,11 @@ public class Human extends PlayerTemplate implements Player{
         return betAmount;
     }
 
-    @Override
-    public boolean hit() {
-        return ui.promptForHit();
-    }
+
 
     @Override
     public boolean hit(Hand hand) {
-        return hit();
+        return ui.promptForHit();
     }
 
     @Override
