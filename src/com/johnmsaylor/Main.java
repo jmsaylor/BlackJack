@@ -21,8 +21,7 @@ public class Main {
         game.registerHand(humanPlayer);
         game.registerHand(aiPlayer);
 
-        game.dealStartGame();
+        game.play();
 
-        ((Human) humanPlayer).ui.showAllHandsFinalReveal(game.getActiveHands());
     }
 }

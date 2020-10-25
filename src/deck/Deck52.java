@@ -9,6 +9,8 @@ public class Deck52 implements Deck{
     public Deck52() {
         for (Suite suite : Suite.values()) {
             for (Value value : Value.values()) {
+                if (value == Value.JOKER)
+                    continue;
                 cards.add(new Card(suite, value));
             }
         }
@@ -35,12 +37,8 @@ public class Deck52 implements Deck{
     }
 
     @Override
-    public Card pullfromTop() {
+    public Card pull() {
         return cards.poll();
     }
 
-    @Override
-    public Card pullfromIndex(int index) {
-        return null;
-    }
 }

@@ -1,6 +1,8 @@
 package hand;
 
 import deck.Card;
+import game.BlackJackRules;
+import game.Rules;
 import players.Player;
 import players.PlayerTemplate;
 
@@ -9,9 +11,11 @@ import java.util.List;
 
 public class Hand {
     public Player owner;
+    Rules gameRules;
     private List<Card> cards = new ArrayList<>();
 
-    public Hand(Player owner) {
+    public Hand(Player owner, Rules gameRules) {
+        this.gameRules = gameRules;
         this.owner = owner;
     }
 
@@ -19,11 +23,21 @@ public class Hand {
         cards.add(card);
     }
 
-    public void removeCard(Card card) {
+    public Card removeCard(Card card) {
         cards.remove(card);
+        return card;
+    }
+
+    public int[] getPotentialTotals() {
+        return gameRules.getHandValue(this);
     }
 
     public List<Card> getCards() {
         return cards;
     }
+
+    public Player getOwner() {
+        return owner;
+    }
+
 }

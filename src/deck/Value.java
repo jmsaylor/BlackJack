@@ -1,7 +1,6 @@
 package deck;
 
 public enum Value {
-    ONE,
     TWO,
     THREE,
     FOUR,
@@ -14,5 +13,6 @@ public enum Value {
     JACK,
     QUEEN,
     KING,
-    ACE
+    ACE,
+    JOKER
 }

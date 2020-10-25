@@ -1,5 +1,6 @@
 package players;
 
+import hand.Hand;
 import ui.UI;
 
 public class Human extends PlayerTemplate implements Player{
@@ -24,6 +25,21 @@ public class Human extends PlayerTemplate implements Player{
         int betAmount = ui.inputBet();
         deductFromBalance(betAmount);
         return betAmount;
+    }
+
+    @Override
+    public boolean hit() {
+        return ui.promptForHit();
+    }
+
+    @Override
+    public boolean hit(Hand hand) {
+        return hit();
+    }
+
+    @Override
+    public boolean split() {
+        return ui.getAnswer("Do you want to split?");
     }
 
     public void addFundsToBalance(int amt) {
