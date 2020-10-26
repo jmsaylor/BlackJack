@@ -31,7 +31,8 @@ public class BlackJack {
     public void play() {
         dealStartGame();
         showGameIfHuman();
-        for (Hand hand : getActiveHands()) {
+        for (int handIndex = 0; handIndex < getActiveHands().size(); handIndex++) {
+            Hand hand = getActiveHands().get(handIndex);
             if (gameRules.isBlackJack(hand)) {
                 handleBlackJack(hand);
                 continue;
