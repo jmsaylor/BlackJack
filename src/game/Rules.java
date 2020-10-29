@@ -1,7 +1,5 @@
 package game;
 
-import deck.Card;
-import deck.Value;
 import hand.Hand;
 
 import java.util.List;

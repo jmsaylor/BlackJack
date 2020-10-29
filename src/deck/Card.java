@@ -9,10 +9,4 @@ public class Card {
         this.VALUE = value;
     }
 
-    @Override
-    public String toString() {
-        return SUITE + " " + VALUE;
-    }
-
-
 }

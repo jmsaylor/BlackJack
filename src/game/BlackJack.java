@@ -56,6 +56,15 @@ public class BlackJack {
         System.out.println(determineWinners());
     }
 
+    public void dealStartGame() {
+        for (int i = 0; i < INITIAL_CARDS; i++) {
+            for (Hand hand : getActiveHands()) {
+                Card card = deck.pull();
+                hand.addCard(card);
+            }
+        }
+    }
+
     private List<Hand> determineWinners() {
         List<Hand> winners = new ArrayList<>();
         for (Hand hand : getActiveHands()) {
@@ -77,15 +86,6 @@ public class BlackJack {
     private void hit(Hand hand) {
         Card card = deck.pull();
         hand.addCard(card);
-    }
-
-    public void dealStartGame() {
-        for (int i = 0; i < INITIAL_CARDS; i++) {
-            for (Hand hand : getActiveHands()) {
-                Card card = deck.pull();
-                hand.addCard(card);
-            }
-        }
     }
 
     public void showGameIfHuman() {

@@ -82,6 +82,10 @@ public class Console implements UI{
         return scanner.next().toUpperCase().startsWith("Y");
     }
 
+    public void showHandValue(int value) {
+        showHandValues(new int[]{value});
+    }
+
     @Override
     public void showHandValues(int[] values) {
         System.out.print("[");
@@ -93,10 +97,6 @@ public class Console implements UI{
         }
 
         System.out.print("]");
-    }
-
-    public void showHandValue(int value) {
-        showHandValues(new int[]{value});
     }
 
     @Override

@@ -32,6 +32,6 @@ public class AI extends PlayerTemplate implements Player {
 
     @Override
     public boolean split() {
-        return false;
+        return true;
     }
 }

@@ -17,6 +17,12 @@ public class Hand {
         this.owner = owner;
     }
 
+    public Hand(Player owner, Rules gameRules, Card[] cards) {
+        this.gameRules = gameRules;
+        this.owner = owner;
+        for (Card card : cards) addCard(card);
+    }
+
     public void addCard(Card card) {
         cards.add(card);
     }

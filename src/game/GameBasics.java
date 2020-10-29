@@ -9,7 +9,7 @@ import java.util.EnumMap;
 import java.util.List;
 
 public abstract class GameBasics {
-    EnumMap<Value, Integer> valueMap = new EnumMap<Value, Integer>(Value.class);
+    private EnumMap<Value, Integer> valueMap = new EnumMap<Value, Integer>(Value.class);
 
     public GameBasics() {
         valueMap.put(Value.TWO,2);

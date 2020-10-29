@@ -15,6 +15,5 @@ public interface Player {
 
     static String getPlayerType(Player player) {
         return player.getClass().toString().substring(player.getClass().toString().indexOf(".") + 1);
-
     }
 }

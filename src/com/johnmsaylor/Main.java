@@ -1,6 +1,5 @@
 package com.johnmsaylor;
 
-import deck.Deck52;
 import game.BlackJack;
 import players.AI;
 import players.Dealer;
